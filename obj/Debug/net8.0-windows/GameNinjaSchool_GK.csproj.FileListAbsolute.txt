@@ -1,0 +1,17 @@
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.exe
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.deps.json
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.runtimeconfig.json
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.dll
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.GameForm.resources
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.Properties.Resources.resources
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.AssemblyInfo.cs
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.dll
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\refint\GameNinjaSchool_GK.dll
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.genruntimeconfig.cache
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\ref\GameNinjaSchool_GK.dll
