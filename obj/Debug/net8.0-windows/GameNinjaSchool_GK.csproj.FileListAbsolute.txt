@@ -15,3 +15,4 @@ C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\refint\Game
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.genruntimeconfig.cache
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\ref\GameNinjaSchool_GK.dll
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.sourcelink.json
