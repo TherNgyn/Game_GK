@@ -138,7 +138,7 @@ namespace GameNinjaSchool_GK.Character
         public void GainExp(int amount)
         {
             EXP += amount;
-            int expNeeded = Level * 100; 
+            int expNeeded = Level * 50; 
 
             if (EXP >= expNeeded)
             {

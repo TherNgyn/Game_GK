@@ -3,6 +3,7 @@ using GameNinjaSchool_GK.Controller;
 using GameNinjaSchool_GK.GameNinjaSchool_GK;
 using System;
 using System.Drawing.Drawing2D;
+using System.Numerics;
 using System.Windows.Forms;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
@@ -111,9 +112,26 @@ namespace GameNinjaSchool_GK
                 
                 g.DrawImage(canhGame.Obj[i].Image, canhGame.Obj[i].X, canhGame.Obj[i].Y, canhGame.Obj[i].Width, canhGame.Obj[i].Height);
             }
-                // ninja
-                g.DrawImage(ninja.Image, new Rectangle(ninja.X, ninja.Y, ninja.width, ninja.height));
+            if (ninja.TurnAround)
+            {
 
+             
+                GraphicsState state = g.Save();
+
+           
+                g.TranslateTransform(ninja.X + ninja.width / 2, ninja.Y + ninja.height / 2);
+                g.ScaleTransform(-1, 1);
+                g.TranslateTransform(-(ninja.X + ninja.width / 2), -(ninja.Y + ninja.height / 2));
+
+                
+                g.DrawImage(ninja.Image, ninja.X, ninja.Y, ninja.width, ninja.height);
+
+                g.Restore(state);
+            }
+            else
+            {
+                g.DrawImage(ninja.Image, ninja.X, ninja.Y, ninja.width, ninja.height);
+            }
             // Draw HUD (Health, MP, EXP)
             DrawHUD(g);
         }
