@@ -52,6 +52,7 @@
             Load += GameForm_Load;
             Paint += GameForm_Paint;
             KeyDown += GameForm_KeyDown;
+            KeyPress += GameForm_KeyPress;
             KeyUp += GameForm_KeyUp;
             ResumeLayout(false);
         }
