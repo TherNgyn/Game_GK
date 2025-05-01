@@ -58,11 +58,12 @@ namespace GameNinjaSchool_GK.Character
     public class Ninja : Character
     {
         // Dat mau ban dau
+        /*public int HP = 100;*/
         public int MP = 100;
         public int EXP  = 0;
         public int Level = 1;
-        public int jumpHeight = -10;
-        public int maxJumpHeight = 100;
+        public int jumpHeight = -20;
+        public int maxJumpHeight = 200;
         public int banDauJumpY = 0;
         public bool IsClimbing   = false;
         public List<Image> JumpFrames = new List<Image>();

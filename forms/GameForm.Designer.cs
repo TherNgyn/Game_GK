@@ -43,7 +43,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1262, 673);
+            ClientSize = new Size(1182, 673);
             DoubleBuffered = true;
             KeyPreview = true;
             MaximizeBox = false;
