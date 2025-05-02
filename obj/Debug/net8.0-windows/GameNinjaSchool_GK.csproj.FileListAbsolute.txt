@@ -16,3 +16,29 @@ C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSc
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.genruntimeconfig.cache
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\ref\GameNinjaSchool_GK.dll
 C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.sourcelink.json
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.GameForm.resources
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.forms.MenuForm.resources
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.Properties.Resources.resources
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.csproj.GenerateResource.cache
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.GeneratedMSBuildEditorConfig.editorconfig
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.AssemblyInfoInputs.cache
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.AssemblyInfo.cs
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.csproj.CoreCompileInputs.cache
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.sourcelink.json
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.dll
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\refint\GameNinjaSchool_GK.dll
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\menu_bg.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.exe
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.deps.json
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.runtimeconfig.json
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.dll
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.forms.DialogueForm.resources
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.genruntimeconfig.cache
+D:\winform\GIUA KY\Game_GK\obj\Debug\net8.0-windows\ref\GameNinjaSchool_GK.dll
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\exit_button.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\soundoff_button.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\soundon_button.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\Sound\menu_bgm.wav
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\start_button.png
