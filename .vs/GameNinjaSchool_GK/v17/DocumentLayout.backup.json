@@ -1,0 +1,140 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|c:\\users\\hp\\source\\repos\\gameninjaschool_gk\\forms\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:forms\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|c:\\users\\hp\\source\\repos\\gameninjaschool_gk\\gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:gameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|c:\\users\\hp\\source\\repos\\gameninjaschool_gk\\controller\\movecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:controller\\movecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:forms\\gameform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|c:\\users\\hp\\source\\repos\\gameninjaschool_gk\\forms\\gameform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:forms\\gameform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|c:\\users\\hp\\source\\repos\\gameninjaschool_gk\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B955403B-A158-4255-A2E6-4E6EE1F69F06}|GameNinjaSchool_GK.csproj|solutionrelative:character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 632,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 424,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.Designer.cs",
+              "RelativeDocumentMoniker": "forms\\GameForm.Designer.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.Designer.cs",
+              "RelativeToolTip": "forms\\GameForm.Designer.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T01:57:52.816Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameForm.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.cs",
+              "RelativeDocumentMoniker": "forms\\GameForm.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.cs",
+              "RelativeToolTip": "forms\\GameForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T01:45:59.843Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Character.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Character\\Character.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
+              "RelativeToolTip": "Character\\Character.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAADwv0wAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T03:44:42.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameObject.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameObject.cs",
+              "RelativeDocumentMoniker": "GameObject.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameObject.cs",
+              "RelativeToolTip": "GameObject.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwPIBAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T02:17:15.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MoveController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Controller\\MoveController.cs",
+              "RelativeDocumentMoniker": "Controller\\MoveController.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Controller\\MoveController.cs",
+              "RelativeToolTip": "Controller\\MoveController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwEoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T01:46:38.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.cs",
+              "RelativeDocumentMoniker": "forms\\GameForm.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.cs [Design]",
+              "RelativeToolTip": "forms\\GameForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T03:01:26.517Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
