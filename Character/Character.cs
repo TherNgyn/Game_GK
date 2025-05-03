@@ -78,7 +78,7 @@ namespace GameNinjaSchool_GK.Character
         private bool isInvincible = false; // Cờ bất tử
         // Sửa đổi dòng khai báo Timer:
         private Timer invincibilityTimer; // <-- Sử dụng tên đầy đủ ở đây
-        private const int InvincibilityDuration = 1000; // Thời gian bất tử (ms)
+        private const int InvincibilityDuration = 500; // Thời gian bất tử (ms)
         public Ninja()
         {
             width = 30;
@@ -163,22 +163,22 @@ namespace GameNinjaSchool_GK.Character
         public void GainExp(int amount)
         {
             EXP += amount;
-            int expNeeded = Level * 50; 
+            //int expNeeded = Level * 50; 
 
-            if (EXP >= expNeeded)
-            {
-                LevelUp();
-            }
+            //if (EXP >= expNeeded)
+            //{
+            //    LevelUp();
+            //}
         }
 
-        private void LevelUp()
+        /*private void LevelUp()
         {
             Level++;
-            EXP -= (Level - 1) * 100; 
-            MaxHP += 10; 
+            EXP -= (Level - 1) * 50; 
+            //MaxHP += 10; 
             HP = MaxHP; 
             MP = 100; 
-        }
+        }*/
         public void TakeDamage(int damage)
         {
             if (!isInvincible)

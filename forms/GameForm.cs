@@ -738,6 +738,7 @@ namespace GameNinjaSchool_GK
                                 if (!enemy.IsAlive)
                                 {
                                     ninja.GainExp(enemy.ExpValue);
+                                    CheckLevelUp();
                                     // --- Tạo vật phẩm tiền rơi ra ---
                                     if (coinImage != null) // Đảm bảo ảnh tiền không null
                                     {
@@ -854,6 +855,7 @@ namespace GameNinjaSchool_GK
 
                 try
                 {   
+                    enemies.Clear();
                     ChuongNgai.Clear();
                     VatPhamThuThap.Clear();
                     GayChet.Clear();
@@ -901,6 +903,11 @@ namespace GameNinjaSchool_GK
             GayChet.Clear();
             Obj.Clear();
             enemies.Clear();
+            finalBoss.StopAllSkill();
+            finalBoss = null;
+            bossBullets.Clear();
+            energyColumns.Clear();
+            bullets.Clear();
             moneyItems.Clear();
             levelLoader.LoadLevel(1);
             background = levelLoader.GetBackgroundForLevel(1);

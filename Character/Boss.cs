@@ -206,6 +206,18 @@ namespace GameNinjaSchool_GK.Character
         }
 
 
+        public void StopAllSkill()
+        {
+            MessageBox.Show("stop");
+            // Dừng tất cả các timer liên quan đến tấn công/skill
+            if (shootTimer != null) shootTimer.Stop();
+            if (skill1Timer != null) skill1Timer.Stop();
+            if (skill2Timer != null) skill2Timer.Stop();
+            if (skill3Timer != null) skill3Timer.Stop();
+            // --- Dừng các Timer liên quan đến Skill 4 ---
+            if (skill4Timer != null) skill4Timer.Stop(); // Dừng Timer hồi chiêu
+            if (barrageTimer != null) barrageTimer.Stop(); // Dừng Timer bắn chuỗi (nếu đang chạy)
+        }
         // --- Logic Bắn đạn thông thường (Skill cơ bản) ---
         private void ShootTimer_Tick(object sender, EventArgs e)
         {
