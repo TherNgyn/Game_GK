@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Timer = System.Windows.Forms.Timer;
+
 
 namespace GameNinjaSchool_GK.Character
 {
@@ -69,12 +71,26 @@ namespace GameNinjaSchool_GK.Character
         public List<Image> JumpFrames = new List<Image>();
         public List<Image> ClimbFrames = new List<Image>();
 
+
+        public int Money { get; set; } = 0;
+
+        // --- Thuộc tính và Timer cho trạng thái bất tử tạm thời ---
+        private bool isInvincible = false; // Cờ bất tử
+        // Sửa đổi dòng khai báo Timer:
+        private Timer invincibilityTimer; // <-- Sử dụng tên đầy đủ ở đây
+        private const int InvincibilityDuration = 500; // Thời gian bất tử (ms)
         public Ninja()
         {
             width = 30;
             height = 65;
             HP = 100;
             MaxHP = 100;
+
+            // Khởi tạo Timer bất tử
+            invincibilityTimer = new Timer(); // <-- Sử dụng tên đầy đủ ở đây
+            invincibilityTimer.Interval = InvincibilityDuration;
+            invincibilityTimer.Tick += InvincibilityTimer_Tick;
+            invincibilityTimer.Stop();
 
             try
             {
@@ -96,6 +112,14 @@ namespace GameNinjaSchool_GK.Character
                     g.Clear(Color.Red);
                 }
             }
+        }
+
+        // --- Phương thức xử lý khi Timer bất tử Tick ---
+        private void InvincibilityTimer_Tick(object sender, EventArgs e)
+        {
+            isInvincible = false;
+            invincibilityTimer.Stop();
+            System.Diagnostics.Debug.WriteLine("Invincibility ended.");
         }
 
         public override void UpdateAnimation()
@@ -139,26 +163,45 @@ namespace GameNinjaSchool_GK.Character
         public void GainExp(int amount)
         {
             EXP += amount;
-            int expNeeded = Level * 50; 
+            //int expNeeded = Level * 50; 
 
-            if (EXP >= expNeeded)
-            {
-                LevelUp();
-            }
+            //if (EXP >= expNeeded)
+            //{
+            //    LevelUp();
+            //}
         }
 
-        private void LevelUp()
+        /*private void LevelUp()
         {
             Level++;
-            EXP -= (Level - 1) * 100; 
-            MaxHP += 10; 
+            EXP -= (Level - 1) * 50; 
+            //MaxHP += 10; 
             HP = MaxHP; 
             MP = 100; 
+        }*/
+        public void TakeDamage(int damage)
+        {
+            if (!isInvincible)
+            {
+                HP -= damage;
+                if (HP < 0) HP = 0;
+
+                isInvincible = true;
+                invincibilityTimer.Start();
+
+                System.Diagnostics.Debug.WriteLine($"Player took {damage} damage. Current HP: {HP}");
+
+                if (HP <= 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("Player Died!");
+                    // Logic xử lý khi chết
+                }
+            }
         }
     }
 
 
-    public class Enemy : Character
+    /*public class Enemy : Character
     {
         public int DamageAmount { get; set; } = 10;
         public int ExpValue { get; set; } = 20;
@@ -268,5 +311,5 @@ namespace GameNinjaSchool_GK.Character
                 // Death animation could be triggered here
             }
         }
-    }
+    }*/
 }

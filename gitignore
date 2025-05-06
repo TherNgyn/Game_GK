@@ -1,0 +1,27 @@
+# Ignore Visual Studio temporary files, build results, and user-specific files
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+out/
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Visual Studio Code settings
+.vscode/
+
+# Others
+*.log
+*.tmp
+*.cache
+
+# Windows thumbs.db
+Thumbs.db
