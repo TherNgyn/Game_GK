@@ -15,19 +15,29 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\end_dialogue_bg.png" />
 	  <None Remove="Resources\exit_button.png" />
 	  <None Remove="Resources\menu_bg.png" />
+	  <None Remove="Resources\menu_button.png" />
 	  <None Remove="Resources\soundoff_button.png" />
 	  <None Remove="Resources\soundon_button.png" />
+	  <None Remove="Resources\Sound\game_bgm.wav" />
 	  <None Remove="Resources\Sound\menu_bgm.wav" />
 	  <None Remove="Resources\start_button.png" />
+	  <None Remove="Resources\start_dialogue_bg.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="Resources\end_dialogue_bg.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	  <Content Include="Resources\exit_button.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Resources\menu_bg.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\menu_button.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Resources\soundoff_button.png">
@@ -36,10 +46,16 @@
 	  <Content Include="Resources\soundon_button.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
+	  <Content Include="Resources\Sound\game_bgm.wav">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	  <Content Include="Resources\Sound\menu_bgm.wav">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Resources\start_button.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\start_dialogue_bg.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>

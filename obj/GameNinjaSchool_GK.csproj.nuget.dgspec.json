@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameNinjaSchool_GK.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameNinjaSchool_GK.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\obj\\",
+=======
+    "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj": {}
+  },
+  "projects": {
+    "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj",
+        "projectName": "GameNinjaSchool_GK",
+        "projectPath": "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "D:\\winform\\GIUA KY\\Game_GK\\obj\\",
+>>>>>>> 79de24ac910fc62e6c8808794d6c786b8cb5399f
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

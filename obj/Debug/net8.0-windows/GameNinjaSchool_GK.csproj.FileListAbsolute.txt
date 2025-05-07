@@ -76,3 +76,7 @@ E:\LTWinGame3\Game_GK\obj\Debug\net8.0-windows\refint\GameNinjaSchool_GK.dll
 E:\LTWinGame3\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.pdb
 E:\LTWinGame3\Game_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.genruntimeconfig.cache
 E:\LTWinGame3\Game_GK\obj\Debug\net8.0-windows\ref\GameNinjaSchool_GK.dll
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\end_dialogue_bg.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\menu_button.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\start_dialogue_bg.png
+D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\Sound\game_bgm.wav

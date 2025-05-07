@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "R0A73u0ggAM=",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameNinjaSchool_GK.csproj",
+=======
+  "dgSpecHash": "ntmfjiAnmUyuXhDoeJ+D/Or9vATlz6eclLkARRCsU1zKakt4dJ9XxS8msgmteKtm0fdS0qq9I59mBeQZHGvJqQ==",
+  "success": true,
+  "projectFilePath": "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj",
+>>>>>>> 79de24ac910fc62e6c8808794d6c786b8cb5399f
   "expectedPackageFiles": [],
   "logs": []
 }
