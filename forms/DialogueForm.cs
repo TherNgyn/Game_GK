@@ -23,8 +23,7 @@ namespace GameNinjaSchool_GK.forms
         private Button btnNext;
 
         private Panel panelEnd;
-        private Label lblEnd;
-        private Button btnMenu;
+        private Label lblEnd;  
 
         private PictureBox btnSoundToggle;
         private PictureBox btnBack;
@@ -48,9 +47,9 @@ namespace GameNinjaSchool_GK.forms
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
             InitializeComponent();
-            if (!SoundManager.IsMuted)
-                SoundManager.StopMusic();
-                SoundManager.PlayMusic("Resources/Sound/dialogue_bgm.wav");
+            SoundManager.StopMusic(); // luôn dừng nhạc cũ
+            SoundManager.PlayMusic("Resources/Sound/dialogue_bgm.wav"); // luôn cập nhật nhạc mới
+
         }
 
         private void InitializeComponent()
@@ -96,17 +95,8 @@ namespace GameNinjaSchool_GK.forms
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            btnMenu = new Button
-            {
-                Text = "Về Menu Chính",
-                Size = new Size(150, 40),
-                BackColor = Color.Transparent,
-                Location = new Point(125, 80)
-            };
-            btnMenu.Click += BtnMenu_Click;
-
+          
             panelEnd.Controls.Add(lblEnd);
-            panelEnd.Controls.Add(btnMenu);
             this.Controls.Add(panelEnd);
 
             int margin = 10;

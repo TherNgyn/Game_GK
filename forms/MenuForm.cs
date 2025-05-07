@@ -24,6 +24,8 @@ namespace GameNinjaSchool_GK.forms
             InitializeComponent();
             InitUI();
             SoundManager.PlayMusic("Resources/Sound/menu_bgm.wav");
+
+
             this.FormClosing += MenuForm_FormClosing;
 
         }
@@ -123,7 +125,6 @@ namespace GameNinjaSchool_GK.forms
             SoundManager.ToggleMute();
             UpdateSoundIcon();
         }
-
 
 
         private void MenuForm_FormClosing(object sender, FormClosingEventArgs e)
