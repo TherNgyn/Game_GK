@@ -58,12 +58,14 @@ namespace GameNinjaSchool_GK.forms
             };
             btnExit.Click += (s, e) =>
             {
-                var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn thoát game?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Application.Exit();
+                    SoundManager.StopMusic();
+                    Environment.Exit(0);
                 }
             };
+
+
 
 
             int buttonWidth = 200;
@@ -98,9 +100,9 @@ namespace GameNinjaSchool_GK.forms
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            SoundManager.StopMusic();
+            var intro = new DialogueForm(DialogueForm.DialogueState.Intro);
+            intro.Show();
             this.Hide();
-            new DialogueForm().Show(); 
         }
 
         private void BtnSound_Click(object sender, EventArgs e)
@@ -116,7 +118,7 @@ namespace GameNinjaSchool_GK.forms
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result != DialogResult.Yes)
             {
-                e.Cancel = true;  
+                e.Cancel = true;
             }
         }
 

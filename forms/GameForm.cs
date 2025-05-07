@@ -84,6 +84,8 @@ namespace GameNinjaSchool_GK
 
         public GameForm()
         {
+            this.FormClosing += GameForm_FormClosing;
+
             try
             {
                 InitializeComponent();
@@ -1138,6 +1140,15 @@ namespace GameNinjaSchool_GK
         private void GameForm_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
