@@ -16,8 +16,9 @@ namespace GameNinjaSchool_GK
         public int Height;
         public Image Image;
         public string Type;
-        /*public int Direction = 1;
-        public int MinX, MaxX;*/
+        // Thuộc tính hiển thị nhãn
+        public bool ShowLabel => Type == "chuongngai";
+        public string Label => ShowLabel ? "Chướng Ngại" : "";
 
         public Rectangle GetBounds()
         {
@@ -484,7 +485,7 @@ namespace GameNinjaSchool_GK
                 Y = 720 - 200,
                 Width = 200,
                 Height = 50,
-                Type = "chuongngaiMove",
+                Type = "chuongngai",
                 Image = LoadImage("Assets/Platform/ground.png", Color.Brown),
                 SpeedX = 4,
                 DirectionX = 1,
@@ -539,9 +540,6 @@ namespace GameNinjaSchool_GK
             Obj = obj;
             imgbackground = LoadBGImg("Assets/Background/bg17.png");
         }
-
-        
-
 
         protected override void LoadChuongNgai()
         {
@@ -656,11 +654,8 @@ namespace GameNinjaSchool_GK
             ChuongNgai.AddRange(new[] { ground, ground2, ground3 , tt, tt2, platform1, platform2, platform3, platform4, platform5, movingPlatform });
             Obj.AddRange(new[] { ground, ground2, ground3 , tt, tt2, platform1, platform2, platform3, platform4, platform5, movingPlatform });
         }
-
-        // ... other methods
     }
 
-    // LevelLoader class 
     public class LevelLoader
     {
         private List<GameObject> ChuongNgai;
@@ -673,7 +668,7 @@ namespace GameNinjaSchool_GK
         {
             get
             {
-                // Getter: Trả về giá trị của biến private
+                // Getter: 
                 return Enemies;
             }
             set
@@ -739,132 +734,3 @@ namespace GameNinjaSchool_GK
         }
     }
 }
-/*public class CanhGame
-{
-    public List<GameObject> Obj = new List<GameObject>();
-    public List<GameObject> ChuongNgai = new List<GameObject>();
-    public List<GameObject> VatPhamThuThap = new List<GameObject>();
-    public List<GameObject> GayChet = new List<GameObject>();
-
-    public void LoadLevel(int level)
-    {
-        ChuongNgai.Clear();
-        VatPhamThuThap.Clear();
-        GayChet.Clear();
-
-        try
-        {
-            var ground = new GameObject
-            {
-                X = 0,
-                // Lay ground là đáy form
-                Y = 720 - 100 ,
-                Width = 300,
-                Height = 50,
-                Type = "ground"
-            };
-            var chuongngai1 = new GameObject
-            {
-                X = 300,
-                Y = 720 - 200,
-                Width = 20,
-                Height = 50,
-                Type = "chuongngai"
-            };
-            var chuongngai2 = new GameObject
-            {
-                X = 400,
-                Y = 720 - 350,
-                Width = 50,
-                Height = 50,
-                Type = "chuongngai"
-            };
-            var chuongngai3 = new GameObject
-            {
-                X = 500,
-                Y = 720 - 450,
-                Width = 300,
-                Height = 50,
-                Type = "chuongngai"
-            };
-            var chuongngai4 = new GameObject
-            {
-                X = 600,
-                Y = 720 - 550,
-                Width = 50,
-                Height = 200,
-                Type = "grond"
-            };
-            var chuongngai5 = new GameObject
-            {
-                X = 800,
-                Y = 720 - 650,
-                Width = 50,
-                Height = 200,
-                Type = "chuongngai"
-            };
-            try
-            {
-                ground.Image = Image.FromFile("Assets/Platform/ground.png");
-                chuongngai1.Image = Image.FromFile("Assets/Platform/groundHigh.png");
-                chuongngai2.Image = Image.FromFile("Assets/Platform/box.png");
-                chuongngai3.Image = Image.FromFile("Assets/Platform/ground.png");
-                chuongngai4.Image = Image.FromFile("Assets/Platform/groundHigh.png");
-                chuongngai5.Image = Image.FromFile("Assets/Platform/groundHigh.png");
-            }
-            catch (Exception ex)
-            {
-                ground.Image = new Bitmap(ground.Width, ground.Height);
-                using (Graphics g = Graphics.FromImage(ground.Image))
-                {
-                    g.Clear(Color.Brown);
-                }
-            }
-            ChuongNgai.Add(ground);
-            ChuongNgai.Add(chuongngai1);
-            ChuongNgai.Add(chuongngai2);
-            ChuongNgai.Add(chuongngai3);
-            ChuongNgai.Add(chuongngai4);
-            ChuongNgai.Add(chuongngai5);
-            Obj.Add(ground);
-            Obj.Add(chuongngai1);
-            Obj.Add(chuongngai2);
-            Obj.Add(chuongngai3);
-            Obj.Add(chuongngai4);
-            Obj.Add(chuongngai5);
-            *//*MessageBox.Show(ChuongNgai[0].ToString());*/
-
-/*// Add a collectible item with an image
-var collectible = new GameObject
-{
-    X = 300,
-    Y = 550,
-    Width = 30,
-    Height = 30,
-    Type = "exp"
-};
-
-try
-{
-    collectible.Image = Image.FromFile(Path.Combine(Application.StartupPath, "Assets", "Items", "exp_orb.png"));
-}
-catch (Exception ex)
-{
-    // Fallback image if the file can't be loaded
-    collectible.Image = new Bitmap(collectible.Width, collectible.Height);
-    using (Graphics g = Graphics.FromImage(collectible.Image))
-    {
-        g.Clear(Color.Yellow);
-    }
-}
-
-VatPhamThuThap.Add(collectible);
-Objects.Add(collectible);*//*
-}
-catch (Exception ex)
-{
-MessageBox.Show($"Lỗi tải level {level}: {ex.Message}");
-}
-}
-}*/
-

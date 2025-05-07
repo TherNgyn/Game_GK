@@ -62,7 +62,7 @@ namespace GameNinjaSchool_GK.Character
         // Dat mau ban dau
         /*public int HP = 100;*/
         public int MP = 100;
-        public int EXP  = 0;
+        public double EXP  = 0;
         public int Level = 1;
         public int jumpHeight = -20;
         public int maxJumpHeight = 200;
@@ -174,7 +174,7 @@ namespace GameNinjaSchool_GK.Character
         {
             return MP >= 10 && !Falling;
         }
-        public void GainExp(int amount)
+        public void GainExp(double amount)
         {
             EXP += amount;
         }

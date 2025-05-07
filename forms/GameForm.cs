@@ -25,7 +25,8 @@ namespace GameNinjaSchool_GK
         private Image background;
         GameObject chuongngai;
         int nextLevel;
-
+        int expPerElement = 0;
+       
         bool isAttacking = false; // Cờ trạng thái tấn công của Player
         int attackFrameIndex = 0; // Chỉ số frame animation tấn công Player
         int attackFrameDelay = 0; // Bộ đếm thời gian chuyển frame tấn công Player
@@ -92,7 +93,7 @@ namespace GameNinjaSchool_GK
             try
             {
                 InitializeComponent();
-
+               
                 SoundManager.StopMusic();
                 SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
 
@@ -137,7 +138,7 @@ namespace GameNinjaSchool_GK
                         g.Clear(Color.LightBlue);
                     }
                 }
-                
+                InitializeExpValues();
 
                 this.KeyPreview = true;
 
@@ -158,7 +159,12 @@ namespace GameNinjaSchool_GK
                 MessageBox.Show($"Lỗi khởi động Game: {ex.Message}");
             }
         }
-
+        private void InitializeExpValues()
+        {
+            int expNeeded = ninja.Level * 50;
+            int chuongNgaiCount = ChuongNgai.Count(obj => obj.Type == "chuongngai" || obj.Type == "chuongngaiMove");
+            expPerElement =((expNeeded - enemies.Count*10)/chuongNgaiCount)+1;
+        }
         // --- Các phương thức Add đối tượng (được Boss gọi) ---
         public void AddEnergyColumn(EnergyColumn column)
         {
@@ -189,6 +195,20 @@ namespace GameNinjaSchool_GK
             for (int i = 0; i < Obj.Count; i++)
             {
                 g.DrawImage(Obj[i].Image, Obj[i].X, Obj[i].Y, Obj[i].Width, Obj[i].Height);
+                // Vẽ nhãn "Chướng Ngại"
+                if (Obj[i].ShowLabel)
+                {
+                    using (Font labelFont = new Font("Cambria", 12, FontStyle.Bold))
+                    using (Brush textBrush = new SolidBrush(Color.LightGoldenrodYellow))
+                    using (Brush shadowBrush = new SolidBrush(Color.DarkSlateGray))
+
+                    {
+                        // Tính toán vị trí nhãn
+                        Point textPoint = new Point(Obj[i].X + Obj[i].Width/2 - 60, Obj[i].Y + Obj[i].Height+5);
+                        g.DrawString(Obj[i].Label, labelFont, shadowBrush, textPoint.X + 1, textPoint.Y + 1);
+                        g.DrawString(Obj[i].Label, labelFont, textBrush, textPoint);
+                    }
+                }
             }
             if (ninja.TurnAround)
             {
@@ -216,11 +236,10 @@ namespace GameNinjaSchool_GK
         public void VeEnemies(Graphics g)
         {
             Rectangle clientRect = new Rectangle(0, 0, this.ClientSize.Width, this.ClientSize.Height);
-            for (int i = enemies.Count - 1; i >= 0; i--) // Vòng lặp ngược
+            for (int i = enemies.Count - 1; i >= 0; i--)
             {
                 Enemy enemy = enemies[i];
-                // Chỉ vẽ nếu đối tượng còn sống
-                if (enemy.IsAlive) // <-- Chỉ vẽ nếu còn sống
+                if (enemy.IsAlive) //Chỉ vẽ nếu còn sống
                 {
                     // Sử dụng CurrentAnimationFrame để vẽ ảnh động theo trạng thái và hướng
                     Image currentFrame = enemy.CurrentAnimationFrame;
@@ -230,43 +249,21 @@ namespace GameNinjaSchool_GK
                                                                                                                     // Kiểm tra va chạm với clientRect nếu bạn đang áp dụng tối ưu hóa "chỉ vẽ trong màn hình"
                         if (clientRect.IntersectsWith(enemyRect))
                         {
-                            // Lật ảnh nếu cần thiết (chỉ lật nếu frame set hiện tại là frame 1 hướng và hướng nhìn ngược lại)
-                            // Logic lật phức tạp hơn nếu không có đủ frame cho cả 2 hướng.
-                            // Cách tốt nhất là có đủ frame cho cả 2 hướng.
-                            // Nếu chỉ có frame Right, và enemy.IsFacingRight là false:
                             bool flipHorizontal = false;
-                            // Cần truy cập dictionary trong Enemy để kiểm tra, nhưng allAnimationFrames là protected.
-                            // Nếu cần lật, có thể thêm public property trong Enemy để kiểm tra điều kiện lật.
-                            // Ví dụ: if (!enemy.IsFacingRight && enemy.NeedsFlipForDrawing) { ... }
-
-                            // Tạm thời giả định bạn có đủ frame cho cả 2 hướng, nên không cần lật ở đây.
-                            // Nếu không có đủ frame, bạn cần thêm logic lật ảnh tại đây.
-                            // if (!enemy.IsFacingRight && enemy.HasOnlyRightFacingFramesForCurrentState()) { g.ScaleTransform(-1, 1); g.TranslateTransform(-enemy.Width, 0); }
-
-
                             g.DrawImage(currentFrame, enemy.X, enemy.Y, enemy.Width, enemy.Height);
-
-                            // Reset lại transform sau khi vẽ nếu đã lật
-                            // if (!enemy.IsFacingRight && enemy.HasOnlyRightFacingFramesForCurrentState()) { g.ResetTransform(); }
-
-
-                            // Chỉ vẽ thanh máu nếu đối tượng còn sống
-                            { // Điều kiện enemy.IsAlive đã kiểm tra ở ngoài
+                            
+                            { 
                               // Vẽ thanh máu kẻ địch/Boss (vẽ cùng vị trí với kẻ địch)
                                 float hpBarHeight = 5;
                                 float hpBarY = enemy.Y - hpBarHeight - 2;
                                 g.DrawRectangle(Pens.Black, enemy.X, hpBarY, enemy.Width, hpBarHeight);
                                 float hpBarWidth = (float)enemy.HP / enemy.MaxHP * enemy.Width;
                                 g.FillRectangle(Brushes.Red, enemy.X, hpBarY, hpBarWidth, hpBarHeight);
-
-                                // Vẽ thanh máu Boss lớn hơn (Nếu có)
-                                // if (enemy is Boss boss) { ... }
                             }
                         }
                     }
                 }
             }
-            // -------------------------------------
         }
 
         public void VeMoneyItem(Graphics g)
@@ -405,19 +402,15 @@ namespace GameNinjaSchool_GK
 
             // Khôi phục trạng thái Graphics ban đầu
             g.Restore(state);
-
-            // Cách khác ngắn gọn hơn:
-            // g.TranslateTransform(x + width / 2, y + height / 2); // Di chuyển gốc tọa độ đến tâm đối tượng
-            // g.RotateTransform(angle); // Xoay theo góc
-            // g.DrawImage(image, -width / 2, -height / 2, width, height); // Vẽ ảnh tại gốc mới (-w/2, -h/2)
-            // g.ResetTransform(); // Quan trọng: Reset lại ma trận biến đổi sau khi vẽ
         }
         private HashSet<GameObject> expObj = new HashSet<GameObject>();
+        
         private void CheckVaCham()
         {
             Rectangle ninjaRect = new Rectangle(ninja.X, ninja.Y, ninja.width, ninja.height);
             bool oTrenChuongNgai = false;
-            int expNeeded = ninja.Level * 50;
+            int expNeeded = ninja.Level * 90;
+            
             for (int i = 0; i < ChuongNgai.Count; i++)
             {
                 var chuongngai = ChuongNgai[i];
@@ -429,14 +422,6 @@ namespace GameNinjaSchool_GK
                     if (ninja.SpeedY > 0)
                     {
                         int yVaCham = chuongngai.Y;
-                        /* if (chuongngai.Type == "water")
-                         {
-                             yVaCham += 50;
-                         }
-                         if(chuongngai.Type =="chuongngaiMoveDa")
-                         {
-                             yVaCham += 50;
-                         }*/
 
                         laOTren = ninja.Y + ninja.height >= yVaCham - 10 && ninja.Y + ninja.height <= yVaCham + 20;
                         bool laDungVaoChuongNgai = ninja.X + ninja.width > chuongngai.X && ninja.X < chuongngai.X + chuongngai.Width;
@@ -459,14 +444,10 @@ namespace GameNinjaSchool_GK
                                     ninja.Y += movingObjDoc.SpeedY * movingObjDoc.DirectionY;
                                 }
 
-                            if (oTrenChuongNgai && chuongngai.Type == "chuongngai" && !expObj.Contains(chuongngai))
+                            if (oTrenChuongNgai && (chuongngai.Type == "chuongngaiMove" || chuongngai.Type == "chuongngai") && !expObj.Contains(chuongngai))
                             {
                                 expObj.Add(chuongngai);
-                                int chuongNgaiCount = ChuongNgai.Count(obj => obj.Type == "chuongngai");
-                                if (chuongNgaiCount > 0)
-                                    ninja.EXP += (expNeeded / chuongNgaiCount)+2;
-                               /* else
-                                    ninja.EXP += 5;*/
+                                ninja.GainExp(expPerElement* ninja.Level);
                                 CheckLevelUp();
                             }
                             break;
@@ -514,17 +495,13 @@ namespace GameNinjaSchool_GK
             g.DrawString($"{ninja.EXP}/{expNeeded} (Lv.{ninja.Level})", new Font("Cambria", 12), Brushes.White, 60, 80);
 
             // --- Thêm phần vẽ Tiền ---
-            
             int moneyDisplayY = 110;
-            int moneyDisplayX = 5; // Căn chỉnh vị trí X giống với các nhãn khác
-
-            // Vẽ nhãn "Money:"
-            // Sử dụng Brushes.Gold hoặc Brushes.Yellow cho màu tiền
+            int moneyDisplayX = 5; 
             g.DrawString($"Money: ", new Font("Cambria", 12), Brushes.Gold, moneyDisplayX, moneyDisplayY);
 
             // Vẽ giá trị số tiền hiện có
-            // Căn chỉnh vị trí X sang phải nhãn "Money:", giống với cách căn chỉnh giá trị HP/MP/EXP
-            int moneyValueX = moneyDisplayX + 60; // Điều chỉnh offset 60 nếu cần căn chỉnh khác
+            // Căn chỉnh vị trí X sang phải nhãn "Money:"
+            int moneyValueX = moneyDisplayX + 100;
             g.DrawString($"{ninja.Money}", new Font("Cambria", 12), Brushes.White, moneyValueX, moneyDisplayY); // <-- Lấy giá trị từ player.Money
                                                                                                                  // -------------------------
         }
@@ -658,11 +635,10 @@ namespace GameNinjaSchool_GK
                 }
             }
 
-            // Va chạm Player với Đạn Boss
             for (int i = bossBullets.Count - 1; i >= 0; i--) // Duyệt ngược
             {
                 BossBullet bossBullet = bossBullets[i];
-                if (bossBullet.IsActive) // Chỉ kiểm tra nếu đạn Boss còn hoạt động
+                if (bossBullet.IsActive)
                 {
                     Rectangle bossBulletRect = new Rectangle((int)bossBullet.X, (int)bossBullet.Y, bossBullet.Width, bossBullet.Height);
                     if (playerRect.IntersectsWith(bossBulletRect) && ninja.HP != 0)
@@ -690,19 +666,24 @@ namespace GameNinjaSchool_GK
                     }
                 }
             }
-
-            // Va chạm Player với Cột năng lượng (EnergyColumn)
-            for (int i = energyColumns.Count - 1; i >= 0; i--) // Duyệt ngược
+           
+            if (energyColumns.Count > 0) // Kiểm tra danh sách có phần tử không
             {
-                EnergyColumn column = energyColumns[i];
-                if (column.IsActive) // Chỉ kiểm tra nếu cột năng lượng đã Active
+                for (int i = energyColumns.Count - 1; i >= 0; i--) // Duyệt ngược
                 {
-                    Rectangle columnRect = new Rectangle((int)column.X, (int)column.Y, column.Width, column.Height);
-                    if (playerRect.IntersectsWith(columnRect) && ninja.HP != 0)
+                    if (i < energyColumns.Count)
                     {
-                        ninja.TakeDamage(column.Damage); // Player nhận sát thương liên tục
-                        XLPlayerHP();
-                        System.Diagnostics.Debug.WriteLine($"Player inside energy column. HP: {ninja.HP}");
+                        EnergyColumn column = energyColumns[i];
+                        if (column.IsActive) // Chỉ kiểm tra nếu cột năng lượng đã Active
+                        {
+                            Rectangle columnRect = new Rectangle((int)column.X, (int)column.Y, column.Width, column.Height);
+                            if (playerRect.IntersectsWith(columnRect))
+                            {
+                                ninja.TakeDamage(column.Damage);
+                                XLPlayerHP();
+                                System.Diagnostics.Debug.WriteLine($"Player inside energy column. HP: {ninja.HP}");
+                            }
+                        }
                     }
                 }
             }
@@ -717,31 +698,23 @@ namespace GameNinjaSchool_GK
         }
         public void XLVaChamEnemies()
         {
-            // Va chạm Phi tiêu (Player Bullet) với Kẻ địch
 
-            List<Bullet> remainingBullets = new List<Bullet>(); // Tạo một danh sách rỗng để chứa các viên đạn sẽ giữ lại
-
-            // Duyệt qua danh sách phi tiêu hiện tại (có thể dùng foreach vì không sửa đổi danh sách này khi duyệt)
+            List<Bullet> remainingBullets = new List<Bullet>(); 
             foreach (Bullet bullet in bullets)
             {
-                // 1. Cập nhật vị trí phi tiêu
                 bullet.Move();
+                bool shouldKeepBullet = true; 
 
-                bool shouldKeepBullet = true; // Mặc định giữ lại viên đạn này
-
-                // 2. Kiểm tra nếu phi tiêu ra ngoài màn hình
+                // Kiểm tra nếu phi tiêu ra ngoài màn hình
                 int formWidth = this.ClientSize.Width;
                 int formHeight = this.ClientSize.Height;
                 if (bullet.X > formWidth || bullet.Y < 0 || bullet.Y > formHeight || bullet.X + SHURIKEN_DRAW_WIDTH < 0)
                 {
-                    shouldKeepBullet = false; // Viên đạn ra ngoài màn hình, không giữ lại
+                    shouldKeepBullet = false;
                 }
                 else // Nếu không ra ngoài màn hình, kiểm tra va chạm
                 {
                     Rectangle bulletRect = new Rectangle((int)bullet.X, (int)bullet.Y, SHURIKEN_DRAW_WIDTH, SHURIKEN_DRAW_HEIGHT);
-
-                    // 3. Kiểm tra va chạm với kẻ địch (duyệt qua danh sách kẻ địch)
-                    // Không cần duyệt ngược enemies ở đây vì chúng ta không xóa enemy trong vòng lặp này (enemy được xóa ở cuối tick)
                     foreach (Enemy enemy in enemies) // Duyệt qua danh sách kẻ địch
                     {
                         if (enemy.IsAlive) // Chỉ kiểm tra va chạm với kẻ địch còn sống
@@ -751,12 +724,11 @@ namespace GameNinjaSchool_GK
                             if (bulletRect.IntersectsWith(enemyRect))
                             {
                                 // Va chạm phát hiện!
-                                enemy.TakeDamage(100); // Kẻ địch nhận sát thương
-                                //if()
+                                enemy.TakeDamage(300); // Kẻ địch nhận sát thương
                                 // Nếu kẻ địch chết sau đòn đánh này
                                 if (!enemy.IsAlive)
                                 {
-                                    ninja.GainExp(enemy.ExpValue);
+                                    ninja.GainExp(enemy.ExpValue* ninja.Level);
                                     CheckLevelUp();
                                     // --- Tạo vật phẩm tiền rơi ra ---
                                     if (coinImage != null) // Đảm bảo ảnh tiền không null
@@ -778,18 +750,13 @@ namespace GameNinjaSchool_GK
                                             //if (!useObjectLimits || moneyItems.Count < MAX_MONEY_ITEMS) moneyItems.Add(new MoneyItem(enemy.X, enemy.Y + (enemy.Height / 2), MONEY_ITEM_DRAW_WIDTH * 2, MONEY_ITEM_DRAW_HEIGHT * 2, coinImage, enemy.MoneyValue));
                                         }
                                     }
-                                    // -------------------------------
-                                    // Kẻ địch sẽ được xóa khỏi danh sách enemies ở cuối tick
                                 }
-
                                 shouldKeepBullet = false; // Viên đạn đã va chạm, không giữ lại
-                                break; // Phi tiêu chỉ va chạm với một kẻ địch, thoát vòng lặp duyệt kẻ địch
+                                break;
                             }
                         }
                     }
                 }
-
-                // Nếu viên đạn nên được giữ lại (không ra ngoài màn hình và không va chạm), thêm vào danh sách mới
                 if (shouldKeepBullet)
                 {
                     remainingBullets.Add(bullet);
@@ -803,9 +770,8 @@ namespace GameNinjaSchool_GK
             // Xóa các kẻ địch đã chết khỏi danh sách (xóa ngay lập tức)
             for (int i = enemies.Count - 1; i >= 0; i--)
             {
-                if (!enemies[i].IsAlive) // <-- Chỉ kiểm tra IsAlive
+                if (!enemies[i].IsAlive) 
                 {
-                    // Logic rơi tiền đã xử lý ở phần va chạm Bullet vs Enemy
                     enemies.RemoveAt(i); // Xóa ngay lập tức khỏi danh sách
                 }
             }
@@ -857,8 +823,6 @@ namespace GameNinjaSchool_GK
         private void CheckLevelUp()
         {
             int expNeeded = ninja.Level * 50;
-
-
             if (ninja.EXP >= expNeeded )
             {
                 ninja.Level++;
@@ -890,24 +854,30 @@ namespace GameNinjaSchool_GK
 
                     if(nextLevel == 3)
                     {
-                        //enemies.Clear();
+                       
                         LoadBoss();
                         ThemBoss();
-                        // Bắt đầu các timer skill của Boss (nên gọi sau khi thêm Boss vào danh sách enemies)
+  
                         finalBoss.StartSkillTimers();
                     }
                     
                     CollectRemainingMoney();
 
-                    if (ChuongNgai.Count > 0)
-                    {
+                    if(ChuongNgai.Count > 0)
+            {
                         GameObject ground = ChuongNgai[0];
-                        ninja.X = 50;
-                        ninja.Y = Math.Max(ninja.Y, ground.Y - ninja.height);
-                        MoveController.SetGroundLevel(ground.Y);
+                        ninja.X = 50; 
+                        ninja.Y = Math.Max(ninja.Y, ground.Y - ninja.height); 
+                        MoveController.SetGroundLevel(ground.Y); 
                     }
 
+                    // Đặt lại trạng thái ninja
+                    ninja.Falling = false;
+                    ninja.Jump = false;
+                    ninja.SpeedY = 0;
+
                     expObj.Clear();
+                    
                 }
                 catch (Exception ex)
                 {
@@ -966,14 +936,12 @@ namespace GameNinjaSchool_GK
             columnActiveImage = Image.FromFile("Assets/VuKhi/CotNL2.png"); // Thay đường dẫn
             bossBulletImage = Image.FromFile("Assets/VuKhi/phitieu22.png"); // Thay đường dẫn (ví dụ dùng chung ảnh với phi tiêu)
 
-            Dictionary<AnimationState, Dictionary<bool, List<Image>>> goblinAnimationFrames = new Dictionary<AnimationState, Dictionary<bool, List<Image>>>();
-
-            // Goblin Run Right
+            Dictionary<AnimationState, Dictionary<bool, List<Image>>> goblinAnimationFrames = new Dictionary<AnimationState, Dictionary<bool, List<Image>>>();           
             List<Image> goblinRunRight = new List<Image>()
                  {
                      Image.FromFile("Assets/Enemy/Bat/0.png"), // Thay đường dẫn
                      Image.FromFile("Assets/Enemy/Bat/1.png"),
-                     // ... thêm các frame khác ...
+                   
                  };
             // Goblin Run Left
             List<Image> goblinRunLeft = new List<Image>()
@@ -982,17 +950,16 @@ namespace GameNinjaSchool_GK
                      Image.FromFile("Assets/Enemy/Bat/4.png"),
                      // ...
                  };
-            // Goblin Idle Right/Left (Nếu có)
-            List<Image> goblinIdleRight = new List<Image>() { /* ... */ };
-            List<Image> goblinIdleLeft = new List<Image>() { /* ... */ };
-            // Goblin Hit Right/Left (Nếu có)
+            // Goblin Idle Right/Left 
+            List<Image> goblinIdleRight = new List<Image>() {  };
+            List<Image> goblinIdleLeft = new List<Image>() {  };
+            // Goblin Hit Right/Left 
             List<Image> goblinHitRight = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Bat/2.png"),
-                    /* ... */ 
+                  
                 };
             List<Image> goblinHitLeft = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Bat/5.png"),
-                    /* ... */ 
                 };
 
 
@@ -1012,42 +979,37 @@ namespace GameNinjaSchool_GK
                 List<Image> bossIdleRight = new List<Image>()
                  {
                      Image.FromFile("Assets/Enemy/Swordsman/m901.png"),
-                     //Image.FromFile("Assets/Boss/BossIdleRight/BossIdleRight01.png"), // Thay đường dẫn
-                     //Image.FromFile("Assets/Boss/BossIdleRight/BossIdleRight02.png"),
-                     // ...
                  };
                 List<Image> bossIdleLeft = new List<Image>()
                  {
                      Image.FromFile("Assets/Enemy/Swordsman/m911.png"),
-                     //Image.FromFile("Assets/Boss/BossIdleLeft/BossIdleLeft01.png"), // Thay đường dẫn
-                     // ...
+                     
                  };
                 // Boss Run Right/Left (Nếu có animation chạy)
                 List<Image> bossRunRight = new List<Image>() {
-                    Image.FromFile("Assets/Enemy/Swordsman/m900.png"),
-                    /* ... */ 
+       
                 };
                 List<Image> bossRunLeft = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Swordsman/m910.png"),
-                    /* ... */ 
+                   
                 };
                 // Boss Attack Right/Left (Nếu có animation tấn công)
                 List<Image> bossAttackRight = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Swordsman/m903.png"),
-                    /* ... */ 
+                   
                 };
                 List<Image> bossAttackLeft = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Swordsman/m913.png"),
-                    /* ... */ 
+                    
                 };
                 // Boss Hit Right/Left
                 List<Image> bossHitRight = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Swordsman/m902.png"),
-                    /* ... */ 
+                   
                 };
                 List<Image> bossHitLeft = new List<Image>() {
                     Image.FromFile("Assets/Enemy/Swordsman/m912.png"),
-                    /* ... */ 
+                   
                 };
 
                 // Tổ chức vào Dictionary (Chỉ thêm nếu danh sách frame không trống)
@@ -1061,20 +1023,15 @@ namespace GameNinjaSchool_GK
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải ảnh animation hoặc đối tượng: " + ex.Message);
-                // Xử lý lỗi tải ảnh (ví dụ: thoát game hoặc dùng ảnh placeholder)
-                // this.Close();
-                // Có thể tạo ảnh placeholder cho từng loại ảnh bị lỗi ở đây
             }
-            // -----------------------------------------------------------------
 
 
-            this.DoubleBuffered = true; // Bật Double Buffering để giảm giật hình
+            this.DoubleBuffered = true;
         }
 
         public void ThemBoss()
         {
 
-            // --- Tạo kẻ địch ban đầu và Boss ---
             try
             {
                
@@ -1113,34 +1070,24 @@ namespace GameNinjaSchool_GK
                 {
                     System.Diagnostics.Debug.WriteLine("Không tìm thấy Dictionary animation Boss hoặc animation Idle.");
                 }
-                // ------------------------------
                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tạo đối tượng Enemy/Boss: " + ex.Message);
-                // Xử lý lỗi tạo đối tượng
             }
-            // --------------------------------------------------
-               
-            // Bắt đầu Timer Game chính sau khi tải hết tài nguyên và khởi tạo đối tượng
-            //timerGame.Start();
-        
         }
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
             MoveController.KeyDown(ninja, e);
             // Xử lý tấn công Player
-            if (e.KeyCode == Keys.Enter && !isAttacking) // Chỉ tấn công nếu phím Enter được nhấn và Player không đang tấn công
+            if (e.KeyCode == Keys.Enter && !isAttacking)
             {
-                isAttacking = true; // Bắt đầu trạng thái tấn công
-                attackFrameIndex = 0; // Bắt đầu animation tấn công từ frame đầu tiên
-                attackFrameDelay = 0; // Reset bộ đếm thời gian animation
-                bulletCreated = false; // Reset cờ tạo đạn
-                                       // Có thể thêm logic animation tấn công cho Player ở đây nếu có hệ thống animation tương tự Enemy
-                                       // player.SetAnimationState(AnimationState.Attack); // Cần thêm enum Attack và logic xử lý trong class Player
+                isAttacking = true; 
+                attackFrameIndex = 0; 
+                attackFrameDelay = 0; 
+                bulletCreated = false; 
             }
-            // Có thể thêm xử lý các phím khác (ví dụ: phím skill Player)
         }
 
         private void GameForm_KeyUp(object sender, KeyEventArgs e)
