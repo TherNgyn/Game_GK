@@ -108,18 +108,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Character.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
-              "RelativeDocumentMoniker": "Character\\Character.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
-              "RelativeToolTip": "Character\\Character.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAADwv0wAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T03:44:42.26Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "GameObject.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\GameObject.cs",
@@ -153,6 +141,18 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-05-02T11:38:47.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Character.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Character\\Character.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
+              "RelativeToolTip": "Character\\Character.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAADwv0wAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T03:44:42.26Z"
             },
             {
               "$type": "Document",
