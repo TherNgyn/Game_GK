@@ -6,6 +6,8 @@ using System.Drawing.Drawing2D;
 using System.Numerics;
 using System.Reflection.Emit;
 using System.Windows.Forms;
+using GameNinjaSchool_GK.forms;
+
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
@@ -84,12 +86,19 @@ namespace GameNinjaSchool_GK
 
         public GameForm()
         {
+            this.FormClosing += GameForm_FormClosing;
+
+
             try
             {
                 InitializeComponent();
 
+                SoundManager.StopMusic();
+                SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
+
                 try
                 {
+
                     ninja = new Ninja();
                     if (ChuongNgai.Count > 0)
                     {
@@ -640,10 +649,11 @@ namespace GameNinjaSchool_GK
                 if (enemy.IsAlive) // Chỉ kiểm tra nếu kẻ địch còn sống
                 {
                     Rectangle enemyRect = new Rectangle((int)enemy.X, (int)enemy.Y, enemy.Width, enemy.Height);
-                    if (playerRect.IntersectsWith(enemyRect))
+                    if (playerRect.IntersectsWith(enemyRect)&& ninja.HP !=0)
                     {
                         ninja.TakeDamage(enemy is Boss ? 20 : 10); // Player nhận sát thương
-                                                                   // Logic bất tử tạm thời của Player được xử lý trong class Player
+                        XLPlayerHP();
+                        // Logic bất tử tạm thời của Player được xử lý trong class Player
                     }
                 }
             }
@@ -655,9 +665,10 @@ namespace GameNinjaSchool_GK
                 if (bossBullet.IsActive) // Chỉ kiểm tra nếu đạn Boss còn hoạt động
                 {
                     Rectangle bossBulletRect = new Rectangle((int)bossBullet.X, (int)bossBullet.Y, bossBullet.Width, bossBullet.Height);
-                    if (playerRect.IntersectsWith(bossBulletRect))
+                    if (playerRect.IntersectsWith(bossBulletRect) && ninja.HP != 0)
                     {
                         ninja.TakeDamage(bossBullet.Damage); // Player nhận sát thương
+                        XLPlayerHP();
                         bossBullet.IsActive = false; // Đánh dấu đạn Boss không hoạt động sau va chạm
                         System.Diagnostics.Debug.WriteLine($"Player hit by Boss bullet. HP: {ninja.HP}");
                     }
@@ -687,15 +698,23 @@ namespace GameNinjaSchool_GK
                 if (column.IsActive) // Chỉ kiểm tra nếu cột năng lượng đã Active
                 {
                     Rectangle columnRect = new Rectangle((int)column.X, (int)column.Y, column.Width, column.Height);
-                    if (playerRect.IntersectsWith(columnRect))
+                    if (playerRect.IntersectsWith(columnRect) && ninja.HP != 0)
                     {
                         ninja.TakeDamage(column.Damage); // Player nhận sát thương liên tục
+                        XLPlayerHP();
                         System.Diagnostics.Debug.WriteLine($"Player inside energy column. HP: {ninja.HP}");
                     }
                 }
             }
         }
-
+        public void XLPlayerHP()
+        {
+            if(ninja.HP == 0)
+            {
+                //MessageBox.Show("Bạn đã chết");
+                ResetGame();
+            }
+        }
         public void XLVaChamEnemies()
         {
             // Va chạm Phi tiêu (Player Bullet) với Kẻ địch
@@ -749,9 +768,12 @@ namespace GameNinjaSchool_GK
                                         }
                                         else // Nếu là Boss chết
                                         {
-                                            MessageBox.Show($"Chúc mừng! Bạn đã đánh bại Boss!");
-                                            MessageBox.Show($"Chúc mừng! Bạn đã hoàn thành game");
-                                            ResetGame();
+                                            timerGame.Stop(); // Dừng game
+                                            CollectRemainingMoney(); // Thu hết tiền
+
+                                            this.Hide(); // Ẩn GameForm
+                                            var dialogueForm = new DialogueForm(DialogueForm.DialogueState.AfterBoss);
+                                            dialogueForm.Show(); // Mở end dialogue
                                             // Logic rơi tiền đặc biệt của Boss
                                             //if (!useObjectLimits || moneyItems.Count < MAX_MONEY_ITEMS) moneyItems.Add(new MoneyItem(enemy.X, enemy.Y + (enemy.Height / 2), MONEY_ITEM_DRAW_WIDTH * 2, MONEY_ITEM_DRAW_HEIGHT * 2, coinImage, enemy.MoneyValue));
                                         }
@@ -903,10 +925,13 @@ namespace GameNinjaSchool_GK
             GayChet.Clear();
             Obj.Clear();
             enemies.Clear();
-            finalBoss.StopAllSkill();
-            finalBoss = null;
-            bossBullets.Clear();
-            energyColumns.Clear();
+            if(finalBoss!=null) {
+                finalBoss.StopAllSkill();
+                bossBullets.Clear();
+                energyColumns.Clear();
+                finalBoss = null;
+            }
+            
             bullets.Clear();
             moneyItems.Clear();
             levelLoader.LoadLevel(1);
@@ -1070,7 +1095,7 @@ namespace GameNinjaSchool_GK
                     int bossHP = 1000; // Máu Boss
                     int bossMoney = 500; // Tiền rơi khi chết
                     float bossSpeed = 1.0f; // Tốc độ di chuyển
-                    float bossMinX = this.Width * 0.6f; // Giới hạn di chuyển
+                    float bossMinX = this.Width * 0.7f+100; // Giới hạn di chuyển
                     float bossMaxX = this.Width * 0.9f;
                     
                     // Constructor Boss: x, y, w, h, animationFrames, bossBulletImg, gameForm, minionImg, indicatorImg, activeImg, hp, money, speed, minX, maxX, playerRef
@@ -1125,6 +1150,20 @@ namespace GameNinjaSchool_GK
         private void GameForm_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                SoundManager.StopMusic();  
+                Environment.Exit(0);       
+            }
         }
     }
 }
