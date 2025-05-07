@@ -125,8 +125,8 @@ namespace GameNinjaSchool_GK
                 levelLoader = new LevelLoader(ChuongNgai, VatPhamThuThap, GayChet, Obj, enemies);
                 try
                 {
-                    levelLoader.LoadLevel(1);
-                    background = levelLoader.GetBackgroundForLevel(1);
+                    levelLoader.LoadLevel(ninja.Level);
+                    background = levelLoader.GetBackgroundForLevel(ninja.Level);
                     
                 }
                 catch (Exception ex)
@@ -501,8 +501,8 @@ namespace GameNinjaSchool_GK
 
             // Vẽ giá trị số tiền hiện có
             // Căn chỉnh vị trí X sang phải nhãn "Money:"
-            int moneyValueX = moneyDisplayX + 75;
-            g.DrawString($"{ninja.Money}", new Font("Cambria", 12), Brushes.White, moneyValueX, moneyDisplayY); // <-- Lấy giá trị từ player.Money
+            int moneyValueX = moneyDisplayX + 67;
+            g.DrawString($"{ninja.Money}", new Font("Cambria", 12), Brushes.Gold, moneyValueX, moneyDisplayY); // <-- Lấy giá trị từ player.Money
                                                                                                                  // -------------------------
         }
 
@@ -635,18 +635,24 @@ namespace GameNinjaSchool_GK
                 }
             }
 
-            for (int i = bossBullets.Count - 1; i >= 0; i--) // Duyệt ngược
+            if (bossBullets != null && bossBullets.Count > 0) 
             {
-                BossBullet bossBullet = bossBullets[i];
-                if (bossBullet.IsActive)
+                for (int i = bossBullets.Count - 1; i >= 0; i--) 
                 {
-                    Rectangle bossBulletRect = new Rectangle((int)bossBullet.X, (int)bossBullet.Y, bossBullet.Width, bossBullet.Height);
-                    if (playerRect.IntersectsWith(bossBulletRect) && ninja.HP != 0)
+                    if (i < bossBullets.Count) 
                     {
-                        ninja.TakeDamage(bossBullet.Damage); // Player nhận sát thương
-                        XLPlayerHP();
-                        bossBullet.IsActive = false; // Đánh dấu đạn Boss không hoạt động sau va chạm
-                        System.Diagnostics.Debug.WriteLine($"Player hit by Boss bullet. HP: {ninja.HP}");
+                        BossBullet bossBullet = bossBullets[i];
+                        if (bossBullet != null && bossBullet.IsActive) 
+                        {
+                            Rectangle bossBulletRect = new Rectangle((int)bossBullet.X, (int)bossBullet.Y, bossBullet.Width, bossBullet.Height);
+                            if (playerRect.IntersectsWith(bossBulletRect) && ninja.HP != 0)
+                            {
+                                ninja.TakeDamage(bossBullet.Damage); 
+                                XLPlayerHP();
+                                bossBullet.IsActive = false; // Đánh dấu đạn Boss không hoạt động sau va chạm
+                                System.Diagnostics.Debug.WriteLine($"Player hit by Boss bullet. HP: {ninja.HP}");
+                            }
+                        }
                     }
                 }
             }
@@ -723,8 +729,8 @@ namespace GameNinjaSchool_GK
 
                             if (bulletRect.IntersectsWith(enemyRect))
                             {
-                                // Va chạm phát hiện!
-                                enemy.TakeDamage(100); // Kẻ địch nhận sát thương
+                                // Va chạm 
+                                enemy.TakeDamage(ninja.Level*300); // Kẻ địch nhận sát thương
                                 // Nếu kẻ địch chết sau đòn đánh này
                                 if (!enemy.IsAlive)
                                 {
@@ -740,14 +746,8 @@ namespace GameNinjaSchool_GK
                                         }
                                         else // Nếu là Boss chết
                                         {
-                                            timerGame.Stop(); // Dừng game
-                                            CollectRemainingMoney(); // Thu hết tiền
-
-                                            this.Hide(); // Ẩn GameForm
-                                            var dialogueForm = new DialogueForm(DialogueForm.DialogueState.AfterBoss);
-                                            dialogueForm.Show(); // Mở end dialogue
-                                            // Logic rơi tiền đặc biệt của Boss
-                                            //if (!useObjectLimits || moneyItems.Count < MAX_MONEY_ITEMS) moneyItems.Add(new MoneyItem(enemy.X, enemy.Y + (enemy.Height / 2), MONEY_ITEM_DRAW_WIDTH * 2, MONEY_ITEM_DRAW_HEIGHT * 2, coinImage, enemy.MoneyValue));
+                                            ninja.GainExp(enemy.ExpValue*3*ninja.Level);
+                                            CheckLevelUp();
                                         }
                                     }
                                 }
@@ -833,6 +833,12 @@ namespace GameNinjaSchool_GK
                 if (ninja.Level == 4)
                 {
                     MessageBox.Show($"Chúc mừng! Bạn đã đạt cấp cao nhất (Cấp {ninja.Level}) và hoàn thành tất cả các màn chơi!");
+                    timerGame.Stop();
+                    CollectRemainingMoney();
+                    this.Hide();
+                    var dialogueForm = new DialogueForm(DialogueForm.DialogueState.AfterBoss);
+                    dialogueForm.Show();
+
                 }
                 else
                 {
