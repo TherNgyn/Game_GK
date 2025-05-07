@@ -501,7 +501,7 @@ namespace GameNinjaSchool_GK
 
             // Vẽ giá trị số tiền hiện có
             // Căn chỉnh vị trí X sang phải nhãn "Money:"
-            int moneyValueX = moneyDisplayX + 100;
+            int moneyValueX = moneyDisplayX + 75;
             g.DrawString($"{ninja.Money}", new Font("Cambria", 12), Brushes.White, moneyValueX, moneyDisplayY); // <-- Lấy giá trị từ player.Money
                                                                                                                  // -------------------------
         }
@@ -724,7 +724,7 @@ namespace GameNinjaSchool_GK
                             if (bulletRect.IntersectsWith(enemyRect))
                             {
                                 // Va chạm phát hiện!
-                                enemy.TakeDamage(300); // Kẻ địch nhận sát thương
+                                enemy.TakeDamage(100); // Kẻ địch nhận sát thương
                                 // Nếu kẻ địch chết sau đòn đánh này
                                 if (!enemy.IsAlive)
                                 {
@@ -987,6 +987,8 @@ namespace GameNinjaSchool_GK
                  };
                 // Boss Run Right/Left (Nếu có animation chạy)
                 List<Image> bossRunRight = new List<Image>() {
+                     Image.FromFile("Assets/Enemy/Swordsman/m900.png"),
+                    /* ... */ 
        
                 };
                 List<Image> bossRunLeft = new List<Image>() {
