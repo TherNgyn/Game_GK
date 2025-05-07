@@ -10,7 +10,7 @@ namespace GameNinjaSchool_GK.Character
     public class EnergyColumn
     {
         public float X { get; set; } // Vị trí X của cột
-        public float Y { get; set; } // Vị trí Y của cột (thường là 0 hoặc đỉnh màn hình)
+        public float Y { get; set; } // Vị trí Y của cột
         public int Width { get; set; } // Chiều rộng cột
         public int Height { get; set; } // Chiều cao cột (thường bằng chiều cao màn hình)
 
