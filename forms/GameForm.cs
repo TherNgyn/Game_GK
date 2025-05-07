@@ -6,6 +6,8 @@ using System.Drawing.Drawing2D;
 using System.Numerics;
 using System.Reflection.Emit;
 using System.Windows.Forms;
+using GameNinjaSchool_GK.forms;
+
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
@@ -84,6 +86,10 @@ namespace GameNinjaSchool_GK
 
         public GameForm()
         {
+            this.FormClosing += GameForm_FormClosing;
+
+            SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
+
             try
             {
                 InitializeComponent();
@@ -759,9 +765,12 @@ namespace GameNinjaSchool_GK
                                         }
                                         else // Nếu là Boss chết
                                         {
-                                            MessageBox.Show($"Chúc mừng! Bạn đã đánh bại Boss!");
-                                            MessageBox.Show($"Chúc mừng! Bạn đã hoàn thành game");
-                                            ResetGame();
+                                            timerGame.Stop(); // Dừng game
+                                            CollectRemainingMoney(); // Thu hết tiền
+
+                                            this.Hide(); // Ẩn GameForm
+                                            var dialogueForm = new DialogueForm(DialogueForm.DialogueState.AfterBoss);
+                                            dialogueForm.Show(); // Mở end dialogue
                                             // Logic rơi tiền đặc biệt của Boss
                                             //if (!useObjectLimits || moneyItems.Count < MAX_MONEY_ITEMS) moneyItems.Add(new MoneyItem(enemy.X, enemy.Y + (enemy.Height / 2), MONEY_ITEM_DRAW_WIDTH * 2, MONEY_ITEM_DRAW_HEIGHT * 2, coinImage, enemy.MoneyValue));
                                         }
@@ -1138,6 +1147,20 @@ namespace GameNinjaSchool_GK
         private void GameForm_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                SoundManager.StopMusic();  
+                Environment.Exit(0);       
+            }
         }
     }
 }

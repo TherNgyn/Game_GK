@@ -58,12 +58,14 @@ namespace GameNinjaSchool_GK.forms
             };
             btnExit.Click += (s, e) =>
             {
-                var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có chắc muốn thoát game?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Application.Exit();
+                    SoundManager.StopMusic();
+                    Environment.Exit(0);
                 }
             };
+
+
 
 
             int buttonWidth = 200;
@@ -98,25 +100,43 @@ namespace GameNinjaSchool_GK.forms
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            SoundManager.StopMusic();
+            var intro = new DialogueForm(DialogueForm.DialogueState.Intro);
+            intro.Show();
             this.Hide();
-            new DialogueForm().Show(); 
+        }
+
+        private void UpdateSoundIcon()
+        {
+            btnSound.Image = Image.FromFile(SoundManager.IsMuted
+                ? "Resources/soundoff_button.png"
+                : "Resources/soundon_button.png");
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            UpdateSoundIcon();
         }
 
         private void BtnSound_Click(object sender, EventArgs e)
         {
             SoundManager.ToggleMute();
-            btnSound.Image = Image.FromFile(SoundManager.IsMuted
-                ? "Resources/soundoff_button.png"
-                : "Resources/soundon_button.png");
+            UpdateSoundIcon();
         }
+
+
 
         private void MenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result != DialogResult.Yes)
             {
-                e.Cancel = true;  
+                e.Cancel = true;
+            }
+            else
+            {
+                SoundManager.StopMusic();
+                Environment.Exit(0);
             }
         }
 

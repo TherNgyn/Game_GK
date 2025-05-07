@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LTWinGame3\\Game_GK\\GameNinjaSchool_GK.csproj",
+      "projectUniqueName": "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj",
       "projectName": "GameNinjaSchool_GK",
-      "projectPath": "E:\\LTWinGame3\\Game_GK\\GameNinjaSchool_GK.csproj",
+      "projectPath": "D:\\winform\\GIUA KY\\Game_GK\\GameNinjaSchool_GK.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\LTWinGame3\\Game_GK\\obj\\",
+      "outputPath": "D:\\winform\\GIUA KY\\Game_GK\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
