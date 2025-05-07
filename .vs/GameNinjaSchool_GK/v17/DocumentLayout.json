@@ -108,19 +108,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "gitignore",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\gitignore",
-              "RelativeDocumentMoniker": "gitignore",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\gitignore",
-              "RelativeToolTip": "gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-02T11:38:47.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Character.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\Character\\Character.cs",
@@ -141,8 +128,7 @@
               "RelativeToolTip": "GameObject.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAYwPIBAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T02:17:15.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T02:17:15.31Z"
             },
             {
               "$type": "Document",
@@ -155,6 +141,18 @@
               "ViewState": "AgIAAD4AAAAAAAAAAAAgwEoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T01:46:38.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "gitignore",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\gitignore",
+              "RelativeDocumentMoniker": "gitignore",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\gitignore",
+              "RelativeToolTip": "gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-02T11:38:47.644Z"
             },
             {
               "$type": "Document",
