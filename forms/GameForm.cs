@@ -88,14 +88,17 @@ namespace GameNinjaSchool_GK
         {
             this.FormClosing += GameForm_FormClosing;
 
-            SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
 
             try
             {
                 InitializeComponent();
 
+                SoundManager.StopMusic();
+                SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
+
                 try
                 {
+
                     ninja = new Ninja();
                     if (ChuongNgai.Count > 0)
                     {
