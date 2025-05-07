@@ -640,10 +640,11 @@ namespace GameNinjaSchool_GK
                 if (enemy.IsAlive) // Chỉ kiểm tra nếu kẻ địch còn sống
                 {
                     Rectangle enemyRect = new Rectangle((int)enemy.X, (int)enemy.Y, enemy.Width, enemy.Height);
-                    if (playerRect.IntersectsWith(enemyRect))
+                    if (playerRect.IntersectsWith(enemyRect)&& ninja.HP !=0)
                     {
                         ninja.TakeDamage(enemy is Boss ? 20 : 10); // Player nhận sát thương
-                                                                   // Logic bất tử tạm thời của Player được xử lý trong class Player
+                        XLPlayerHP();
+                        // Logic bất tử tạm thời của Player được xử lý trong class Player
                     }
                 }
             }
@@ -655,9 +656,10 @@ namespace GameNinjaSchool_GK
                 if (bossBullet.IsActive) // Chỉ kiểm tra nếu đạn Boss còn hoạt động
                 {
                     Rectangle bossBulletRect = new Rectangle((int)bossBullet.X, (int)bossBullet.Y, bossBullet.Width, bossBullet.Height);
-                    if (playerRect.IntersectsWith(bossBulletRect))
+                    if (playerRect.IntersectsWith(bossBulletRect) && ninja.HP != 0)
                     {
                         ninja.TakeDamage(bossBullet.Damage); // Player nhận sát thương
+                        XLPlayerHP();
                         bossBullet.IsActive = false; // Đánh dấu đạn Boss không hoạt động sau va chạm
                         System.Diagnostics.Debug.WriteLine($"Player hit by Boss bullet. HP: {ninja.HP}");
                     }
@@ -687,15 +689,23 @@ namespace GameNinjaSchool_GK
                 if (column.IsActive) // Chỉ kiểm tra nếu cột năng lượng đã Active
                 {
                     Rectangle columnRect = new Rectangle((int)column.X, (int)column.Y, column.Width, column.Height);
-                    if (playerRect.IntersectsWith(columnRect))
+                    if (playerRect.IntersectsWith(columnRect) && ninja.HP != 0)
                     {
                         ninja.TakeDamage(column.Damage); // Player nhận sát thương liên tục
+                        XLPlayerHP();
                         System.Diagnostics.Debug.WriteLine($"Player inside energy column. HP: {ninja.HP}");
                     }
                 }
             }
         }
-
+        public void XLPlayerHP()
+        {
+            if(ninja.HP == 0)
+            {
+                //MessageBox.Show("Bạn đã chết");
+                ResetGame();
+            }
+        }
         public void XLVaChamEnemies()
         {
             // Va chạm Phi tiêu (Player Bullet) với Kẻ địch
@@ -903,10 +913,13 @@ namespace GameNinjaSchool_GK
             GayChet.Clear();
             Obj.Clear();
             enemies.Clear();
-            finalBoss.StopAllSkill();
-            finalBoss = null;
-            bossBullets.Clear();
-            energyColumns.Clear();
+            if(finalBoss!=null) {
+                finalBoss.StopAllSkill();
+                bossBullets.Clear();
+                energyColumns.Clear();
+                finalBoss = null;
+            }
+            
             bullets.Clear();
             moneyItems.Clear();
             levelLoader.LoadLevel(1);
@@ -1070,7 +1083,7 @@ namespace GameNinjaSchool_GK
                     int bossHP = 1000; // Máu Boss
                     int bossMoney = 500; // Tiền rơi khi chết
                     float bossSpeed = 1.0f; // Tốc độ di chuyển
-                    float bossMinX = this.Width * 0.6f; // Giới hạn di chuyển
+                    float bossMinX = this.Width * 0.7f+100; // Giới hạn di chuyển
                     float bossMaxX = this.Width * 0.9f;
                     
                     // Constructor Boss: x, y, w, h, animationFrames, bossBulletImg, gameForm, minionImg, indicatorImg, activeImg, hp, money, speed, minX, maxX, playerRef
