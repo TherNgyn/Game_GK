@@ -115,11 +115,19 @@
               "RelativeDocumentMoniker": "forms\\GameForm.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\GameNinjaSchool_GK\\forms\\GameForm.cs",
               "RelativeToolTip": "forms\\GameForm.cs",
-              "ViewState": "AgIAAMgCAAAAAAAAAAAiwNQCAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAGwCAAAAAAAAAAAUwHYCAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T01:45:59.843Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
@@ -229,8 +237,7 @@
               "RelativeToolTip": "Character\\Character.cs",
               "ViewState": "AgIAALAAAAAAAAAAAAAcwLQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T03:44:42.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T03:44:42.26Z"
             },
             {
               "$type": "Document",
@@ -267,14 +274,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-05-02T11:38:47.644Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
