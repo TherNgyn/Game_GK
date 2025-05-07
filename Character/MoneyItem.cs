@@ -13,8 +13,8 @@ namespace GameNinjaSchool_GK.Character
         public int Width { get; set; }
         public int Height { get; set; }
         public Image Image { get; set; }
-        public int Value { get; set; } // Giá trị tiền của vật phẩm
-        public bool Collected { get; set; } = false; // Trạng thái đã được thu thập
+        public int Value { get; set; } 
+        public bool Collected { get; set; } = false;
 
         // Constructor
         public MoneyItem(float x, float y, int width, int height, Image image, int value)
@@ -26,15 +26,6 @@ namespace GameNinjaSchool_GK.Character
             Image = image;
             Value = value;
         }
-
-        // Bạn có thể thêm phương thức Move() ở đây nếu muốn tiền rơi ra bay lơ lửng hoặc rơi xuống
-        // Ví dụ:
-        /*
-        public void Move()
-        {
-             Y += 1; // Rơi xuống chậm
-        }
-        */
 
     }
 }
