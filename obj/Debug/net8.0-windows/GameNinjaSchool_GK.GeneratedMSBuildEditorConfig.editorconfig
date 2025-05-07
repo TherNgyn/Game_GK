@@ -14,11 +14,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GameNinjaSchool_GK
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\HP\source\repos\GameNinjaSchool_GK\
-=======
-build_property.ProjectDir = D:\winform\GIUA KY\Game_GK\
->>>>>>> 79de24ac910fc62e6c8808794d6c786b8cb5399f
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
