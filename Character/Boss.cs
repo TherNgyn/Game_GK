@@ -170,7 +170,7 @@ namespace GameNinjaSchool_GK.Character
             // Ví dụ: di chuyển về phía Player (cần đảm bảo targetPlayer không null)
             if (targetPlayer != null)
             {
-                if (this.X < targetPlayer.X - 100) X += Speed; // Giữ khoảng cách 100px
+                if (this.X < targetPlayer.X +600) X += Speed; // Giữ khoảng cách 100px
                 else if (this.X > targetPlayer.X + 100) X -= Speed;
                 else // Nếu ở gần Player, có thể dừng di chuyển và tấn công (nếu có animation Attack)
                 {
@@ -208,7 +208,7 @@ namespace GameNinjaSchool_GK.Character
 
         public void StopAllSkill()
         {
-            MessageBox.Show("stop");
+            //MessageBox.Show("stop");
             // Dừng tất cả các timer liên quan đến tấn công/skill
             if (shootTimer != null) shootTimer.Stop();
             if (skill1Timer != null) skill1Timer.Stop();
