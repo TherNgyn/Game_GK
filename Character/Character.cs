@@ -194,6 +194,7 @@ namespace GameNinjaSchool_GK.Character
                 {
                     System.Diagnostics.Debug.WriteLine("Player Died!");
                     // Logic xử lý khi chết
+                    
                 }
             }
         }
