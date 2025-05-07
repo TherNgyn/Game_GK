@@ -86,6 +86,8 @@ namespace GameNinjaSchool_GK
         {
             this.FormClosing += GameForm_FormClosing;
 
+            SoundManager.PlayMusic("Resources/Sound/game_bgm.wav");
+
             try
             {
                 InitializeComponent();
@@ -1148,6 +1150,11 @@ namespace GameNinjaSchool_GK
             if (result != DialogResult.Yes)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                SoundManager.StopMusic();  
+                Environment.Exit(0);       
             }
         }
     }

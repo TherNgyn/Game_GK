@@ -105,13 +105,26 @@ namespace GameNinjaSchool_GK.forms
             this.Hide();
         }
 
-        private void BtnSound_Click(object sender, EventArgs e)
+        private void UpdateSoundIcon()
         {
-            SoundManager.ToggleMute();
             btnSound.Image = Image.FromFile(SoundManager.IsMuted
                 ? "Resources/soundoff_button.png"
                 : "Resources/soundon_button.png");
         }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            UpdateSoundIcon();
+        }
+
+        private void BtnSound_Click(object sender, EventArgs e)
+        {
+            SoundManager.ToggleMute();
+            UpdateSoundIcon();
+        }
+
+
 
         private void MenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {

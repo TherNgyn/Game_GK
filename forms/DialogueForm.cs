@@ -49,6 +49,7 @@ namespace GameNinjaSchool_GK.forms
 
             InitializeComponent();
             if (!SoundManager.IsMuted)
+                SoundManager.StopMusic();
                 SoundManager.PlayMusic("Resources/Sound/dialogue_bgm.wav");
         }
 
