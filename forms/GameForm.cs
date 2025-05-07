@@ -420,16 +420,16 @@ namespace GameNinjaSchool_GK
                     if (ninja.SpeedY > 0)
                     {
                         int yVaCham = chuongngai.Y;
-                        if (chuongngai.Type == "water")
-                        {
-                            yVaCham += 50;
-                        }
-                        if(chuongngai.Type =="chuongngaiMoveDa")
-                        {
-                            yVaCham += 50;
-                        }
-                        
-                        laOTren = ninja.Y + ninja.height >= yVaCham - 5 && ninja.Y + ninja.height <= yVaCham + 15;
+                        /* if (chuongngai.Type == "water")
+                         {
+                             yVaCham += 50;
+                         }
+                         if(chuongngai.Type =="chuongngaiMoveDa")
+                         {
+                             yVaCham += 50;
+                         }*/
+
+                        laOTren = ninja.Y + ninja.height >= yVaCham - 10 && ninja.Y + ninja.height <= yVaCham + 20;
                         bool laDungVaoChuongNgai = ninja.X + ninja.width > chuongngai.X && ninja.X < chuongngai.X + chuongngai.Width;
 
                         if (laOTren && laDungVaoChuongNgai)
@@ -473,7 +473,7 @@ namespace GameNinjaSchool_GK
 
             // Nếu ninja rớt xuống => die
             int deathY = this.Height + 50;
-            if (ninja.Y > deathY)
+            if (ninja.Y > deathY && !oTrenChuongNgai)
             {
                 ninja.HP = 0;
                 timerGame.Enabled = false;
@@ -505,7 +505,7 @@ namespace GameNinjaSchool_GK
             g.DrawString($"{ninja.EXP}/{expNeeded} (Lv.{ninja.Level})", new Font("Cambria", 12), Brushes.White, 60, 80);
 
             // --- Thêm phần vẽ Tiền ---
-            // Chọn vị trí Y bên dưới phần hiển thị EXP (ví dụ: bắt đầu từ Y=80, cao 25px, cách 5px -> 80 + 25 + 5 = 110)
+            
             int moneyDisplayY = 110;
             int moneyDisplayX = 5; // Căn chỉnh vị trí X giống với các nhãn khác
 
