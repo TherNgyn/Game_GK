@@ -133,6 +133,11 @@ namespace GameNinjaSchool_GK.forms
             {
                 e.Cancel = true;
             }
+            else
+            {
+                SoundManager.StopMusic();
+                Environment.Exit(0);
+            }
         }
 
 
