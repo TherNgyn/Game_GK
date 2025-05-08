@@ -13,9 +13,7 @@ namespace GameNinjaSchool_GK.Character
         Run,
         Attack, // Nếu Enemy/Boss có animation tấn công
         Hit    // Khi nhận sát thương
-        // Thêm các trạng thái khác nếu cần
     }
-    // ----------------------------------------
 
     public class Enemy
     {
@@ -36,7 +34,7 @@ namespace GameNinjaSchool_GK.Character
         private float MinX;
         private float MaxX;
         private bool MovingRight;
-        // ------------------------------------------
+        
 
         // --- Thuộc tính Animation ---
         public bool IsFacingRight { get; private set; } // Hướng nhìn
@@ -82,8 +80,6 @@ namespace GameNinjaSchool_GK.Character
 
             // --- Lưu tất cả các frame animation (Không bao gồm Die) ---
             this.allAnimationFrames = animationFrames;
-            // ------------------------------------
-
             HP = hp;
             MaxHP = hp;
             MoneyValue = moneyValue;
@@ -95,7 +91,7 @@ namespace GameNinjaSchool_GK.Character
             MovingRight = X < (MinX + MaxX) / 2;
             IsFacingRight = MovingRight;
 
-            // --- Thiết lập animation ban đầu (ví dụ: Run hoặc Idle) ---
+            
             // Nếu có animation Run, bắt đầu bằng Run, ngược lại dùng Idle
             if (allAnimationFrames != null && allAnimationFrames.ContainsKey(AnimationState.Run))
             {
@@ -109,17 +105,17 @@ namespace GameNinjaSchool_GK.Character
             {
                 this.currentAnimationFrames = null; // Không có animation
             }
-            // ---------------------------------
+           
         }
 
-        // --- Phương thức cập nhật Hướng nhìn dựa trên vận tốc ---
+        //  Phương thức cập nhật Hướng nhìn dựa trên vận tốc 
         public void UpdateFacingDirection(float velocityX)
         {
             if (velocityX > 0) IsFacingRight = true;
             else if (velocityX < 0) IsFacingRight = false;
             // Nếu velocityX == 0, giữ nguyên hướng nhìn cuối cùng
         }
-        // -------------------------------------------------------
+        //
 
 
         // --- Phương thức cập nhật Animation ---
@@ -306,9 +302,7 @@ namespace GameNinjaSchool_GK.Character
                 }
             }
         }
-        // -----------------------------------------------------------------------
-
-        // ... (các phương thức khác)
+        // 
     }
 }
 

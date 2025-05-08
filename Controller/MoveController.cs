@@ -52,18 +52,30 @@ namespace GameNinjaSchool_GK.Controller
                     player.SpeedX = 5;
                     player.TurnAround = false;
                     break;
+                    break;
                 case Keys.Up:
                     if (!player.Jump && !player.Falling)
                     {
                         player.Jump = true;
                         player.banDauJumpY = player.Y;
-                        player.SpeedY = player.jumpHeight;
+                        if (player.CanJumpHigh())
+                        {
+                            player.SpeedY = player.jumpHeight;
+                            player.maxJumpHeight = 200;
+                            player.MP -= 10;
+                        }
+                        else
+                        {
+
+                            player.SpeedY = player.jumpHeight / 2;
+                            player.maxJumpHeight = 100;
+                        }
                     }
                     break;
                 case Keys.Down:
                     if (player.Jump || player.Falling)
                     {
-                        player.SpeedY += 2; 
+                        player.SpeedY = Math.Min(player.SpeedY + 2, 10);
                     }
                     break;
                 default:

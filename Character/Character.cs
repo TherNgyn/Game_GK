@@ -62,7 +62,7 @@ namespace GameNinjaSchool_GK.Character
         // Dat mau ban dau
         /*public int HP = 100;*/
         public int MP = 100;
-        public int EXP  = 0;
+        public double EXP  = 0;
         public int Level = 1;
         public int jumpHeight = -20;
         public int maxJumpHeight = 200;
@@ -77,7 +77,7 @@ namespace GameNinjaSchool_GK.Character
         // --- Thuộc tính và Timer cho trạng thái bất tử tạm thời ---
         private bool isInvincible = false; // Cờ bất tử
         // Sửa đổi dòng khai báo Timer:
-        private Timer invincibilityTimer; // <-- Sử dụng tên đầy đủ ở đây
+        private Timer invincibilityTimer;
         private const int InvincibilityDuration = 500; // Thời gian bất tử (ms)
         public Ninja()
         {
@@ -87,7 +87,7 @@ namespace GameNinjaSchool_GK.Character
             MaxHP = 100;
 
             // Khởi tạo Timer bất tử
-            invincibilityTimer = new Timer(); // <-- Sử dụng tên đầy đủ ở đây
+            invincibilityTimer = new Timer(); 
             invincibilityTimer.Interval = InvincibilityDuration;
             invincibilityTimer.Tick += InvincibilityTimer_Tick;
             invincibilityTimer.Stop();
@@ -159,26 +159,25 @@ namespace GameNinjaSchool_GK.Character
                 AnimationFrame = 0;
             }
         }
-
-        public void GainExp(int amount)
+        public void UpdateMP()
+        {
+            if (MP >= 10)
+            {
+                MP -= 10;
+            }
+            else
+            {
+                MP = 0;
+            }
+        }
+        public bool CanJumpHigh()
+        {
+            return MP >= 10 && !Falling;
+        }
+        public void GainExp(double amount)
         {
             EXP += amount;
-            //int expNeeded = Level * 50; 
-
-            //if (EXP >= expNeeded)
-            //{
-            //    LevelUp();
-            //}
         }
-
-        /*private void LevelUp()
-        {
-            Level++;
-            EXP -= (Level - 1) * 50; 
-            //MaxHP += 10; 
-            HP = MaxHP; 
-            MP = 100; 
-        }*/
         public void TakeDamage(int damage)
         {
             if (!isInvincible)
