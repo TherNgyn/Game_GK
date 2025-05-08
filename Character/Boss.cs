@@ -12,24 +12,24 @@ namespace GameNinjaSchool_GK.Character
         // --- Thuộc tính riêng cho Boss ---
         // Cooldown cho việc bắn đạn thông thường
         private System.Windows.Forms.Timer shootTimer;
-        private const int ShootInterval = 5000; // Bắn mỗi 10 giây (có thể điều chỉnh)
+        private const int ShootInterval = 5000; // Bắn mỗi 5 giây (có thể điều chỉnh)
 
         // Biến để lưu trữ tham chiếu đến Player (Boss cần biết vị trí Player để tấn công)
         private Ninja targetPlayer;
 
         // Cooldown và Timer cho Skill 1
         private System.Windows.Forms.Timer skill1Timer;
-        private const int Skill1Cooldown = 12000; // Skill 1 hồi chiêu 20 giây
+        private const int Skill1Cooldown = 12000; // Skill 1 hồi chiêu 12 giây
         //private bool isSkill1Ready = true;
 
         // Cooldown và Timer cho Skill 2
         private System.Windows.Forms.Timer skill2Timer;
-        private const int Skill2Cooldown = 7000; // Skill 2 hồi chiêu 24 giây
+        private const int Skill2Cooldown = 7000; // Skill 2 hồi chiêu 7 giây
         //private bool isSkill2Ready = true;
 
         // Cooldown và Timer cho Skill 3
         private System.Windows.Forms.Timer skill3Timer;
-        private const int Skill3Cooldown = 15000; // Skill 3 hồi chiêu 25 giây
+        private const int Skill3Cooldown = 15000; // Skill 3 hồi chiêu 15 giây
         //private bool isSkill3Ready = true;
 
         private Random random = new Random(); // Để chọn skill ngẫu nhiên
@@ -53,7 +53,7 @@ namespace GameNinjaSchool_GK.Character
 
         private Image columnIndicatorImage; // Ảnh vệt sáng báo hiệu
         private Image columnActiveImage;    // Ảnh cột năng lượng đầy đủ
-        private const int HealAmount = 50; // <-- Lượng máu hồi mỗi lần dùng Skill 3 (Ví dụ: 150 HP)
+        private const int HealAmount = 150; // <-- Lượng máu hồi mỗi lần dùng Skill 3 (Ví dụ: 150 HP)
 
         // Cooldown và Timer cho Skill 4 (Rapid Fire Barrage)
         private System.Windows.Forms.Timer skill4Timer;
@@ -237,7 +237,7 @@ namespace GameNinjaSchool_GK.Character
                 // Tạo BossBullet. Damage có thể là giá trị cố định hoặc từ thuộc tính của Boss
                 // Constructor: startX, startY, width, height, image, speed, damage, playerX, playerY
                 // Tốc độ đạn Boss (ví dụ 20)
-                BossBullet bullet = new BossBullet(bulletStartX, bulletStartY, 60, 60, bossBulletImage, 20, 15, targetPlayer.X, targetPlayer.Y); // w, h, img, speed, damage
+                BossBullet bullet = new BossBullet(bulletStartX, bulletStartY, 60, 60, bossBulletImage, 40, 15, targetPlayer.X, targetPlayer.Y); // w, h, img, speed, damage
 
                 // Thêm đạn này vào danh sách đạn của Boss trong GameForm
                 // Kiểm tra giới hạn nếu dùng

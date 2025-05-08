@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameNinjaSchool_GK")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7711bbe9003370e202ebb0dd0221e8d735f653a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cafc6e7f632296a47d74ab7ddde324f8871f3fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameNinjaSchool_GK")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameNinjaSchool_GK")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

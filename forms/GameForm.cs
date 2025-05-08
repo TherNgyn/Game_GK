@@ -1158,10 +1158,18 @@ namespace GameNinjaSchool_GK
 
         private void BtnMenu_Click(object sender, EventArgs e)
         {
-            timerGame.Stop();  
+            timerGame.Stop();
+            if(finalBoss!=null)
+            {
+                finalBoss.StopAllSkill();
+            }
             PauseMenuForm pauseMenu = new PauseMenuForm(this); 
             pauseMenu.ShowDialog();
             timerGame.Start();
+            if (finalBoss != null)
+            {
+                finalBoss.StartSkillTimers();
+            }
         }
 
 
