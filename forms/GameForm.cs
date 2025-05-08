@@ -10,12 +10,16 @@ using GameNinjaSchool_GK.forms;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
+using System.Drawing.Printing;
+using System.IO;
 
 
 namespace GameNinjaSchool_GK
 {
     public partial class GameForm : Form
     {
+        public bool IsConfirmedExit = false;
+        public bool IsReturningToMenu = false;
         public Ninja ninja = new Ninja();
         public List<GameObject> ChuongNgai = new List<GameObject>();
         public List<GameObject> VatPhamThuThap = new List<GameObject>();
@@ -23,6 +27,7 @@ namespace GameNinjaSchool_GK
         public List<GameObject> Obj = new List<GameObject>();
         public LevelLoader levelLoader;
         private Image background;
+        private PictureBox btnMenu;
         GameObject chuongngai;
         int nextLevel;
 
@@ -82,10 +87,13 @@ namespace GameNinjaSchool_GK
         // Kích thước vẽ Enemy/Boss/BossBullet/EnergyColumn sẽ lấy từ thuộc tính Width/Height của object
 
         // Random object (cho các phép tính ngẫu nhiên)
-        private Random random = new Random();
+        private Random random = new Random(); 
+
 
         public GameForm()
         {
+            this.Load += GameForm_Load;
+
             this.FormClosing += GameForm_FormClosing;
 
 
@@ -151,7 +159,29 @@ namespace GameNinjaSchool_GK
                 //MessageBox.Show(ninja.X.ToString());
                 //MessageBox.Show(ninja.Y.ToString());
 
-                timerGame.Start();
+                //button Menu - pause game
+
+                btnMenu = new PictureBox
+                {
+
+                    Size = new Size(64, 64),
+                    Location = new Point(this.ClientSize.Width - 74, 10),
+                    Image = Image.FromFile("Resources/menu_button.png"),
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    BackColor = Color.Transparent,
+                    Cursor = Cursors.Hand
+                };
+
+               
+
+                btnMenu.Click += BtnMenu_Click;
+                this.Controls.Add(btnMenu);
+
+
+
+
+
+            timerGame.Start();
             }
             catch (Exception ex)
             {
@@ -1154,16 +1184,31 @@ namespace GameNinjaSchool_GK
 
         private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result != DialogResult.Yes)
+            if (!IsConfirmedExit && !IsReturningToMenu)
             {
-                e.Cancel = true;
-            }
-            else
-            {
-                SoundManager.StopMusic();  
-                Environment.Exit(0);       
+                var result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                { 
+                    IsConfirmedExit = true;
+                    SoundManager.StopMusic();
+                }
             }
         }
+
+
+
+        private void BtnMenu_Click(object sender, EventArgs e)
+        {
+            timerGame.Stop();  
+            PauseMenuForm pauseMenu = new PauseMenuForm(this); 
+            pauseMenu.ShowDialog();
+            timerGame.Start();
+        }
+
+
     }
 }
