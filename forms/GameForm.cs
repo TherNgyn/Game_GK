@@ -760,7 +760,7 @@ namespace GameNinjaSchool_GK
                             if (bulletRect.IntersectsWith(enemyRect))
                             {
                                 // Va chạm 
-                                enemy.TakeDamage(ninja.Level*300); // Kẻ địch nhận sát thương
+                                enemy.TakeDamage(ninja.Level*70); // Kẻ địch nhận sát thương
                                 // Nếu kẻ địch chết sau đòn đánh này
                                 if (!enemy.IsAlive)
                                 {
@@ -1147,7 +1147,7 @@ namespace GameNinjaSchool_GK
                     e.Cancel = true;
                 }
                 else
-                { 
+                {
                     IsConfirmedExit = true;
                     SoundManager.StopMusic();
                 }

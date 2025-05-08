@@ -70,15 +70,10 @@ namespace GameNinjaSchool_GK.forms
             StyleButton(btnExit);
             btnExit.Click += (s, e) =>
             {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát game không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                { 
-                    parentGameForm.IsConfirmedExit = true;
-                    Application.Exit();   
-                }
+                parentGameForm.Close();  
             };
             this.Controls.Add(btnExit);
-             
+
 
             //back
             Button btnBack = new Button();

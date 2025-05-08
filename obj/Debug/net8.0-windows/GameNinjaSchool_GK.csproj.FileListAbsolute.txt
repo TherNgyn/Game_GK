@@ -80,15 +80,13 @@ D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\end_dialogue_bg.pn
 D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\menu_button.png
 D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\start_dialogue_bg.png
 D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\Sound\game_bgm.wav
-<<<<<<< HEAD
-D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\hp.png
-D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\mana.png
-D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\buy_button.png
-D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\pausemenu_bg.png
-D:\winform\GIUA KY\Game_GK\bin\Debug\net8.0-windows\Resources\quit_button.png
-=======
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\end_dialogue_bg.png
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\menu_button.png
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\Sound\game_bgm.wav
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\start_dialogue_bg.png
->>>>>>> edffaa6cb170c97ddb69eaebdcb205da23a21df4
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\hp.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\mana.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\buy_button.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\pausemenu_bg.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\quit_button.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.forms.PauseMenuForm.resources
