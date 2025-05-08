@@ -84,3 +84,9 @@ C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\e
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\menu_button.png
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\Sound\game_bgm.wav
 C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\start_dialogue_bg.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\hp.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\mana.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\buy_button.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\pausemenu_bg.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\bin\Debug\net8.0-windows\Resources\quit_button.png
+C:\Users\HP\source\repos\GameNinjaSchool_GK\obj\Debug\net8.0-windows\GameNinjaSchool_GK.forms.PauseMenuForm.resources
